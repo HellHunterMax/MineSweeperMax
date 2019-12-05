@@ -1,0 +1,9 @@
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\bin\Debug\MineSweeperMax.exe.config
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\bin\Debug\MineSweeperMax.exe
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\bin\Debug\MineSweeperMax.pdb
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.csprojAssemblyReference.cache
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.Form1.resources
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.Properties.Resources.resources
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.csproj.GenerateResource.cache
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.exe
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.pdb
