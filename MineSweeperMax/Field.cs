@@ -12,7 +12,13 @@ namespace MineSweeperMax
         public const int numberOfFields = 64;
         private static int[] placeOfBomb = new int[numberOFBoms];
         public static string[] field = new string[numberOfFields];
+
         public Field()
+        {
+            FieldCreator();
+
+        }
+        public void FieldCreator()
         {
             for (int i = 0; i < numberOfFields; i++)
             {
@@ -32,9 +38,6 @@ namespace MineSweeperMax
                 //Console.WriteLine(i);
                 field[i] = "*";
             }
-
-            //TODO add +1's around the bombs
-
             Bombchecking(field);
 
             /*int place = 0;

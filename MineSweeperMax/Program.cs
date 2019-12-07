@@ -14,7 +14,7 @@ namespace MineSweeperMax
         [STAThread]
         static void Main()
         {
-            Field firstField = new Field();
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
