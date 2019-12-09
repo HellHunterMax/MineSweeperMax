@@ -15,11 +15,75 @@ namespace MineSweeperMax
         Field firstField = new Field();
         bool flag = false;
         //TODO check for all fields opened.
-        bool allFieldsOpen = false;
+        int numberOfFieldsOpen = 0;
+        Button[] fieldButtonArray = new Button[Field.numberOfFields];
         public Form1()
         {
             InitializeComponent();
-            
+            fieldButtonArray[0] = button1;
+            fieldButtonArray[1] = button2;
+            fieldButtonArray[2] = button3;
+            fieldButtonArray[3] = button4;
+            fieldButtonArray[4] = button5;
+            fieldButtonArray[5] = button6;
+            fieldButtonArray[6] = button7;
+            fieldButtonArray[7] = button8;
+            fieldButtonArray[8] = button9;
+            fieldButtonArray[9] = button10;
+            fieldButtonArray[10] = button11;
+            fieldButtonArray[11] = button12;
+            fieldButtonArray[12] = button13;
+            fieldButtonArray[13] = button14;
+            fieldButtonArray[14] = button15;
+            fieldButtonArray[15] = button16;
+            fieldButtonArray[16] = button17;
+            fieldButtonArray[17] = button18;
+            fieldButtonArray[18] = button19;
+            fieldButtonArray[19] = button20;
+            fieldButtonArray[20] = button21;
+            fieldButtonArray[21] = button22;
+            fieldButtonArray[22] = button23;
+            fieldButtonArray[23] = button24;
+            fieldButtonArray[24] = button25;
+            fieldButtonArray[25] = button26;
+            fieldButtonArray[26] = button27;
+            fieldButtonArray[27] = button28;
+            fieldButtonArray[28] = button29;
+            fieldButtonArray[29] = button30;
+            fieldButtonArray[30] = button31;
+            fieldButtonArray[31] = button32;
+            fieldButtonArray[32] = button33;
+            fieldButtonArray[33] = button34;
+            fieldButtonArray[34] = button35;
+            fieldButtonArray[35] = button36;
+            fieldButtonArray[36] = button37;
+            fieldButtonArray[37] = button38;
+            fieldButtonArray[38] = button39;
+            fieldButtonArray[39] = button40;
+            fieldButtonArray[40] = button41;
+            fieldButtonArray[41] = button42;
+            fieldButtonArray[42] = button43;
+            fieldButtonArray[43] = button44;
+            fieldButtonArray[44] = button45;
+            fieldButtonArray[45] = button46;
+            fieldButtonArray[46] = button47;
+            fieldButtonArray[47] = button48;
+            fieldButtonArray[48] = button49;
+            fieldButtonArray[49] = button50;
+            fieldButtonArray[50] = button51;
+            fieldButtonArray[51] = button52;
+            fieldButtonArray[52] = button53;
+            fieldButtonArray[53] = button54;
+            fieldButtonArray[54] = button55;
+            fieldButtonArray[55] = button56;
+            fieldButtonArray[56] = button57;
+            fieldButtonArray[57] = button58;
+            fieldButtonArray[58] = button59;
+            fieldButtonArray[59] = button60;
+            fieldButtonArray[60] = button61;
+            fieldButtonArray[61] = button62;
+            fieldButtonArray[62] = button63;
+            fieldButtonArray[63] = button64;
         }
         private void FieldButton_Click(object sender, EventArgs e)
         {
@@ -30,10 +94,12 @@ namespace MineSweeperMax
             if (flag && b.Text == "")
             {
                 b.Text = "F";
+                b.ForeColor = Color.Red;
             }
             else if (flag && b.Text == "F")
             {
                 b.Text = "";
+                b.ForeColor = default(Color);
             }
             else
             {
@@ -44,6 +110,7 @@ namespace MineSweeperMax
                 else
                 {
                     b.Text = Field.field[number - 1];
+                    numberOfFieldsOpen++;
                 }
                 
             }
@@ -51,7 +118,7 @@ namespace MineSweeperMax
             {
                 GameOverScreen();
             }
-            else if (allFieldsOpen)
+            else if (numberOfFieldsOpen == (Field.numberOfFields - Field.numberOFBoms))
                 WinningScreen();
 
 
@@ -107,6 +174,7 @@ namespace MineSweeperMax
         }
         private void NewGame()
         {
+            /*
             button1.Text = "";
             button2.Text = "";
             button3.Text = "";
@@ -170,13 +238,24 @@ namespace MineSweeperMax
             button61.Text = "";
             button62.Text = "";
             button63.Text = "";
-            button64.Text = "";
+            button64.Text = "";*/
+            foreach(Button a in fieldButtonArray)
+            {
+                a.Text = "";
+                a.ForeColor = default(Color);
+            }
             firstField.FieldCreator();
+            numberOfFieldsOpen = 0;
         }
 
         private void btnNewGame_Click(object sender, EventArgs e)
         {
-            NewGame();
+            DialogResult result;
+            result = MessageBox.Show("Are you sure you want to start a new game ?", "New game?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                NewGame();
+            }
         }
     }
 }
