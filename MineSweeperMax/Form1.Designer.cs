@@ -94,6 +94,11 @@
             this.button63 = new System.Windows.Forms.Button();
             this.button64 = new System.Windows.Forms.Button();
             this.btnNewGame = new System.Windows.Forms.Button();
+            this.NewGameCustom = new System.Windows.Forms.Button();
+            this.lblWidth = new System.Windows.Forms.Label();
+            this.textBoxWidth = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxHight = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnFlag
@@ -759,11 +764,60 @@
             this.btnNewGame.UseVisualStyleBackColor = true;
             this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
             // 
+            // NewGameCustom
+            // 
+            this.NewGameCustom.Location = new System.Drawing.Point(12, 340);
+            this.NewGameCustom.Name = "NewGameCustom";
+            this.NewGameCustom.Size = new System.Drawing.Size(100, 50);
+            this.NewGameCustom.TabIndex = 83;
+            this.NewGameCustom.Text = "New Game Custom";
+            this.NewGameCustom.UseVisualStyleBackColor = true;
+            this.NewGameCustom.Click += new System.EventHandler(this.NewGameCustom_Click);
+            // 
+            // lblWidth
+            // 
+            this.lblWidth.AutoSize = true;
+            this.lblWidth.Location = new System.Drawing.Point(118, 340);
+            this.lblWidth.Name = "lblWidth";
+            this.lblWidth.Size = new System.Drawing.Size(103, 17);
+            this.lblWidth.TabIndex = 84;
+            this.lblWidth.Text = "Width (5 - 25) :";
+            // 
+            // textBoxWidth
+            // 
+            this.textBoxWidth.Location = new System.Drawing.Point(235, 340);
+            this.textBoxWidth.Name = "textBoxWidth";
+            this.textBoxWidth.Size = new System.Drawing.Size(49, 22);
+            this.textBoxWidth.TabIndex = 85;
+            this.textBoxWidth.Text = "5";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(121, 373);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 17);
+            this.label1.TabIndex = 86;
+            this.label1.Text = "Hight (5 - 25) :";
+            // 
+            // textBoxHight
+            // 
+            this.textBoxHight.Location = new System.Drawing.Point(235, 368);
+            this.textBoxHight.Name = "textBoxHight";
+            this.textBoxHight.Size = new System.Drawing.Size(49, 22);
+            this.textBoxHight.TabIndex = 87;
+            this.textBoxHight.Text = "5";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 342);
+            this.ClientSize = new System.Drawing.Size(301, 404);
+            this.Controls.Add(this.textBoxHight);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxWidth);
+            this.Controls.Add(this.lblWidth);
+            this.Controls.Add(this.NewGameCustom);
             this.Controls.Add(this.btnNewGame);
             this.Controls.Add(this.button33);
             this.Controls.Add(this.button34);
@@ -834,6 +888,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -904,6 +959,11 @@
         private System.Windows.Forms.Button button63;
         private System.Windows.Forms.Button button64;
         private System.Windows.Forms.Button btnNewGame;
+        private System.Windows.Forms.Button NewGameCustom;
+        private System.Windows.Forms.Label lblWidth;
+        private System.Windows.Forms.TextBox textBoxWidth;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxHight;
     }
 }
 

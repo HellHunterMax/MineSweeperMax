@@ -17,6 +17,7 @@ namespace MineSweeperMax
         //TODO check for all fields opened.
         int numberOfFieldsOpen = 0;
         Button[] fieldButtonArray = new Button[Field.numberOfFields];
+        public static MineSweeperV2 newForm;
         public Form1()
         {
             InitializeComponent();
@@ -141,8 +142,6 @@ namespace MineSweeperMax
             }
             else
                 this.Close();
-
-
         }
         private void WinningScreen()
         {
@@ -256,6 +255,32 @@ namespace MineSweeperMax
             {
                 NewGame();
             }
+        }
+
+
+        public int widthOfField, hightOfField;
+        private void NewGameCustom_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(textBoxWidth.Text, out widthOfField)
+                || !int.TryParse(textBoxHight.Text, out hightOfField)
+                || hightOfField < 5
+                || hightOfField > 25
+                || widthOfField < 5
+                || widthOfField > 25)
+            {
+                MessageBox.Show("Invalid imput, Please fill in a number from 5 to 25.");
+                return;
+            }
+            newForm = new MineSweeperV2(widthOfField, hightOfField);
+
+            newForm.ShowDialog();
+
+            
+
+        }
+        public void NewGameV2()
+        {
+            NewGameCustom_Click(null, null);
         }
     }
 }

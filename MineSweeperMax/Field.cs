@@ -8,8 +8,8 @@ namespace MineSweeperMax
 {
     class Field
     {
-        public const int numberOFBoms = 10;
-        public const int numberOfFields = 64;
+        public static int numberOFBoms = 10;
+        public static int numberOfFields = 64;
         private static int[] placeOfBomb = new int[numberOFBoms];
         public static string[] field = new string[numberOfFields];
 
