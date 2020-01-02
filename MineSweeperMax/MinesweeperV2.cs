@@ -69,9 +69,9 @@ namespace MineSweeperMax
             }
             for (int i = 0; i < numberOFBoms; i++)
             {
-                int n = rnd.Next(1, numberOfFields);
+                int n = rnd.Next(0, numberOfFields);
                 while (placeOfBomb.Contains<int>(n))
-                    n = rnd.Next(1, numberOfFields);
+                    n = rnd.Next(0, numberOfFields);
                 placeOfBomb[i] = n;
             }
 
