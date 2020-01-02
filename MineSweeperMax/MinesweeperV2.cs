@@ -13,23 +13,16 @@ namespace MineSweeperMax
 
         public MineSweeperV2(int xn, int yn)
         {
-
             x = xn;
             y = yn;
             InitializeComponent();
             this.LoadGame_Click(null, null);
-
         }
         public void LoadGame_Click(object sender, EventArgs e)
         {
-            //FieldV2 newField = new FieldV2();
-            //newField.FieldCreator();
             this.tileGrid.LoadGrid(new Size(x, y));
-            // size of the form
             this.MaximumSize = this.MinimumSize = new Size(this.tileGrid.Width + 36, this.tileGrid.Height + 110);
             FieldCreator();
-
-
         }
 
         private void btnFlagV2_Click(object sender, EventArgs e)
@@ -52,9 +45,9 @@ namespace MineSweeperMax
             field = new string[x, y];
             numberOfFields = x * y;
 
-            // Setting the number of bombs in the field 20%
-            numberOFBoms = x * y / 5;
-            if (x * y % 5 != 0)
+            // Setting the number of bombs in the field 14,3%
+            numberOFBoms = x * y / 7;
+            if (x * y % 7 != 0)
             {
                 numberOFBoms++;
             }
@@ -254,6 +247,10 @@ namespace MineSweeperMax
                 {
                     GameOverScreen();
                 }
+                else if (tile.Text == "0")
+                {
+                    //TODO open up the field when a 0 is pressed.
+                }
                 else if (numberOfFieldsOpen == (MineSweeperV2.numberOfFields - MineSweeperV2.numberOFBoms))
                     WinningScreen();
 
@@ -273,10 +270,10 @@ namespace MineSweeperMax
 
                 if (result == DialogResult.Yes)
                 {
-                    Form1.newForm.LoadGame_Click(null, null);
+                    MineSweeperSetup.newForm.LoadGame_Click(null, null);
                 }
                 else
-                    Form1.newForm.Close();
+                    MineSweeperSetup.newForm.Close();
             }
             private void WinningScreen()
             {
@@ -284,12 +281,11 @@ namespace MineSweeperMax
                 result = MessageBox.Show("You Win, congratulations!\nNew game ?", "Game won!", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    Form1.newForm.LoadGame_Click(null, null);
+                    MineSweeperSetup.newForm.LoadGame_Click(null, null);
                 }
                 else
                 {
-                    //Application.Exit();
-                    Form1.newForm.Close();
+                    MineSweeperSetup.newForm.Close();
                 }
 
             }
