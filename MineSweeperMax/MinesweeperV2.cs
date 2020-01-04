@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -209,8 +210,12 @@ namespace MineSweeperMax
         }
         private class TileGrid : Panel
         {
+
+            private static readonly HashSet<Tile> gridSearchBlackList = new HashSet<Tile>();
             private Size gridSize;
-            private int numberOfFieldsOpen = 0;
+            private static int numberOfFieldsOpen = 0;
+
+            private Tile this[Point point] =>(Tile)this.Controls[$"Tile_{point.X}_{point.Y}"];
 
             private void Tile_MouseDown(object sender, MouseEventArgs e)
             {
@@ -240,6 +245,7 @@ namespace MineSweeperMax
                     {
                         tile.Text = MineSweeperV2.field[tileX, tileY];
                         numberOfFieldsOpen++;
+
                     }
 
                 }
@@ -249,7 +255,11 @@ namespace MineSweeperMax
                 }
                 else if (tile.Text == "0")
                 {
-                    //TODO open up the field when a 0 is pressed.
+                    tile.TestAdjacentTiles();
+                    gridSearchBlackList.Clear();
+
+                    if (numberOfFieldsOpen == (MineSweeperV2.numberOfFields - MineSweeperV2.numberOFBoms))
+                        WinningScreen();
                 }
                 else if (numberOfFieldsOpen == (MineSweeperV2.numberOfFields - MineSweeperV2.numberOFBoms))
                     WinningScreen();
@@ -304,10 +314,18 @@ namespace MineSweeperMax
                         this.Controls.Add(tile);
                     }
                 }
+                foreach (Tile tile in this.Controls)
+                {
+                    tile.SetAdjacentTiles();
+                }
             }
             private class Tile : Button
             {
                 internal const int LENGTH = 25;
+                private static readonly int[][] adjecentCoords =
+                {
+                    new[] {-1, -1}, new[] {0, -1}, new[] {1, -1}, new[] {1, 0}, new[] {1, 1}, new[] {0, 1}, new[] {-1, 1}, new[] {-1, 0}
+                };
 
                 internal Tile(int x, int y)
                 {
@@ -315,6 +333,52 @@ namespace MineSweeperMax
                     this.Size = new Size(LENGTH, LENGTH);
                     this.Location = new Point(x * LENGTH, y * LENGTH);
                     this.TabIndex = 10 + x * LENGTH + y;
+                    this.GridPosition = new Point(x, y);
+                }
+                internal Tile[] AdjecentTiles { get; private set; }
+                internal Point GridPosition { get; }
+
+                internal void SetAdjacentTiles()
+                {
+                    TileGrid tileGrid = (TileGrid)this.Parent;
+                    List<Tile> adjecentTiles = new List<Tile>(8);
+                    foreach (int[] adjecentCoord in adjecentCoords)
+                    {
+                        Tile tile = tileGrid[new Point(this.GridPosition.X + adjecentCoord[0], this.GridPosition.Y + adjecentCoord[1])];
+                        if (tile != null)
+                        {
+                            adjecentTiles.Add(tile);
+                        }
+                    }
+                    this.AdjecentTiles = adjecentTiles.ToArray();
+                }
+                
+                internal void TestAdjacentTiles()
+                {
+                    
+                    if (gridSearchBlackList.Contains(this))
+                    {
+                        return;
+                    }
+                    gridSearchBlackList.Add(this);
+                    if (this.Text == "")
+                    {
+                        string[] splitUpTileName = this.Name.Split('_'); // Tilename = Tile_**_**.... ** = number == X & Y
+
+                        int tileX = int.Parse(splitUpTileName[1]);
+                        int tileY = int.Parse(splitUpTileName[2]);
+                        this.Text = MineSweeperV2.field[tileX, tileY];
+                        numberOfFieldsOpen++;
+                    }
+                    if (this.Text == "0")
+                    {
+                        foreach (Tile tile in this.AdjecentTiles)
+                        {
+                            tile.TestAdjacentTiles();
+                        }
+                    }
+
+
                 }
             }
         }
