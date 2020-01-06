@@ -221,16 +221,16 @@ namespace MineSweeperMax
             {
                 Tile tile = (Tile)sender;
 
-                string[] splitUpTileName = tile.Name.Split('_'); // Tilename = Tile_**_**.... ** = number == X & Y
+                string[] splitUpTileName = tile.Name.Split('_'); // TileName = Tile_**_**.... ** = number == X & Y
 
                 int tileX = int.Parse(splitUpTileName[1]);
                 int tileY = int.Parse(splitUpTileName[2]);
-                if (MineSweeperV2.Flag && tile.Text == "")
+                if ((MineSweeperV2.Flag || e.Button == MouseButtons.Right) && tile.Text == "")
                 {
                     tile.Text = "F";
                     tile.ForeColor = Color.Red;
                 }
-                else if (MineSweeperV2.Flag && tile.Text == "F")
+                else if ((MineSweeperV2.Flag || e.Button == MouseButtons.Right) && tile.Text == "F")
                 {
                     tile.Text = "";
                     tile.ForeColor = default(Color);
