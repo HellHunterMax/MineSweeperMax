@@ -8,3 +8,7 @@ C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.pdb
 C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.csprojAssemblyReference.cache
 C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.MineSweeperV2.resources
 C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.MineSweeperSetup.resources
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\bin\Debug\MineSweeperMax.exe.manifest
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\bin\Debug\MineSweeperMax.application
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.exe.manifest
+C:\Code_Projects\MineSweeperMax\MineSweeperMax\obj\Debug\MineSweeperMax.application
