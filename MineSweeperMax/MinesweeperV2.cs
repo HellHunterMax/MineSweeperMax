@@ -90,132 +90,45 @@ namespace MineSweeperMax
                 {
                     if (field[i, k] == "*") // if it finds a bomb it will add +1 to all surrounding tiles
                     {
-                        if (i == 0)// top row
-                        {
-                            if (k == 0)// top left
-                            {
-                                if (field[i, k + 1] != "*")
-                                    field[i, k + 1] = (int.Parse(field[i, k + 1]) + 1).ToString(); // spot 6
-                                if (field[i + 1, k] != "*")
-                                    field[i + 1, k] = (int.Parse(field[i + 1, k]) + 1).ToString();// spot 2
-                                if (field[i + 1, k + 1] != "*")
-                                    field[i + 1, k + 1] = (int.Parse(field[i + 1, k + 1]) + 1).ToString();// spot 3
-                            }
-                            else if (k == y - 1)//top right
-                            {
+                        if (IsThisSpotANumber(i - 1, k - 1))
+                            field[i - 1, k - 1] = (int.Parse(field[i - 1, k - 1]) + 1).ToString();// spot 7
+                        if (IsThisSpotANumber(i - 1, k))
+                            field[i - 1, k] = (int.Parse(field[i - 1, k]) + 1).ToString(); // spot 8
+                        if (IsThisSpotANumber(i - 1, k + 1))
+                            field[i - 1, k + 1] = (int.Parse(field[i - 1, k + 1]) + 1).ToString(); // spot 9
+                        if (IsThisSpotANumber(i, k - 1))
+                            field[i, k - 1] = (int.Parse(field[i, k - 1]) + 1).ToString(); // spot 4
+                        if (IsThisSpotANumber(i, k + 1))
+                            field[i, k + 1] = (int.Parse(field[i, k + 1]) + 1).ToString(); // spot 6
+                        if (IsThisSpotANumber(i + 1, k - 1))
+                            field[i + 1, k - 1] = (int.Parse(field[i + 1, k - 1]) + 1).ToString(); // spot 1
+                        if (IsThisSpotANumber(i + 1, k))
+                            field[i + 1, k] = (int.Parse(field[i + 1, k]) + 1).ToString();// spot 2
+                        if (IsThisSpotANumber(i + 1, k + 1))
+                            field[i + 1, k + 1] = (int.Parse(field[i + 1, k + 1]) + 1).ToString();// spot 3
 
-                                if (field[i, k - 1] != "*")
-                                    field[i, k - 1] = (int.Parse(field[i, k - 1]) + 1).ToString(); // spot 4
-                                if (field[i + 1, k - 1] != "*")
-                                    field[i + 1, k - 1] = (int.Parse(field[i + 1, k - 1]) + 1).ToString(); // spot 1
-                                if (field[i + 1, k] != "*")
-                                    field[i + 1, k] = (int.Parse(field[i + 1, k]) + 1).ToString();// spot 2
-                            }
-                            else// middle of the top row
-                            {
-                                if (field[i, k - 1] != "*")
-                                    field[i, k - 1] = (int.Parse(field[i, k - 1]) + 1).ToString(); // spot 4
-                                if (field[i, k + 1] != "*")
-                                    field[i, k + 1] = (int.Parse(field[i, k + 1]) + 1).ToString(); // spot 6
-                                if (field[i + 1, k - 1] != "*")
-                                    field[i + 1, k - 1] = (int.Parse(field[i + 1, k - 1]) + 1).ToString(); // spot 1
-                                if (field[i + 1, k] != "*")
-                                    field[i + 1, k] = (int.Parse(field[i + 1, k]) + 1).ToString();// spot 2
-                                if (field[i + 1, k + 1] != "*")
-                                    field[i + 1, k + 1] = (int.Parse(field[i + 1, k + 1]) + 1).ToString();// spot 3
-                            }
-                        }
-                        else if (i == x - 1)// bottom row
-                        {
-                            if (k == 0)// bottom left 
-                            {
-                                if (field[i - 1, k] != "*")
-                                    field[i - 1, k] = (int.Parse(field[i - 1, k]) + 1).ToString(); // spot 8
-                                if (field[i - 1, k + 1] != "*")
-                                    field[i - 1, k + 1] = (int.Parse(field[i - 1, k + 1]) + 1).ToString(); // spot 9
-                                if (field[i, k + 1] != "*")
-                                    field[i, k + 1] = (int.Parse(field[i, k + 1]) + 1).ToString(); // spot 6
-                            }
-                            else if (k == y - 1)// bottom right
-                            {
-                                if (field[i - 1, k - 1] != "*")
-                                    field[i - 1, k - 1] = (int.Parse(field[i - 1, k - 1]) + 1).ToString();// spot 7
-                                if (field[i - 1, k] != "*")
-                                    field[i - 1, k] = (int.Parse(field[i - 1, k]) + 1).ToString(); // spot 8
-                                if (field[i, k - 1] != "*")
-                                    field[i, k - 1] = (int.Parse(field[i, k - 1]) + 1).ToString(); // spot 4
-                            }
-                            else// bottom middle
-                            {
-                                if (field[i - 1, k - 1] != "*")
-                                    field[i - 1, k - 1] = (int.Parse(field[i - 1, k - 1]) + 1).ToString();// spot 7
-                                if (field[i - 1, k] != "*")
-                                    field[i - 1, k] = (int.Parse(field[i - 1, k]) + 1).ToString(); // spot 8
-                                if (field[i - 1, k + 1] != "*")
-                                    field[i - 1, k + 1] = (int.Parse(field[i - 1, k + 1]) + 1).ToString(); // spot 9
-                                if (field[i, k - 1] != "*")
-                                    field[i, k - 1] = (int.Parse(field[i, k - 1]) + 1).ToString(); // spot 4
-                                if (field[i, k + 1] != "*")
-                                    field[i, k + 1] = (int.Parse(field[i, k + 1]) + 1).ToString(); // spot 6
-                            }
-                        }
-                        else if (k == 0) // left middle
-                        {
-                            if (field[i - 1, k] != "*")
-                                field[i - 1, k] = (int.Parse(field[i - 1, k]) + 1).ToString(); // spot 8
-                            if (field[i - 1, k + 1] != "*")
-                                field[i - 1, k + 1] = (int.Parse(field[i - 1, k + 1]) + 1).ToString(); // spot 9
-                            if (field[i, k + 1] != "*")
-                                field[i, k + 1] = (int.Parse(field[i, k + 1]) + 1).ToString(); // spot 6
-                            if (field[i + 1, k] != "*")
-                                field[i + 1, k] = (int.Parse(field[i + 1, k]) + 1).ToString();// spot 2
-                            if (field[i + 1, k + 1] != "*")
-                                field[i + 1, k + 1] = (int.Parse(field[i + 1, k + 1]) + 1).ToString();// spot 3
-                        }
-                        else if (k == y - 1) // right middle
-                        {
-                            if (field[i - 1, k - 1] != "*")
-                                field[i - 1, k - 1] = (int.Parse(field[i - 1, k - 1]) + 1).ToString();// spot 7
-                            if (field[i - 1, k] != "*")
-                                field[i - 1, k] = (int.Parse(field[i - 1, k]) + 1).ToString(); // spot 8
-                            if (field[i, k - 1] != "*")
-                                field[i, k - 1] = (int.Parse(field[i, k - 1]) + 1).ToString(); // spot 4
-                            if (field[i + 1, k - 1] != "*")
-                                field[i + 1, k - 1] = (int.Parse(field[i + 1, k - 1]) + 1).ToString(); // spot 1
-                            if (field[i + 1, k] != "*")
-                                field[i + 1, k] = (int.Parse(field[i + 1, k]) + 1).ToString();// spot 2
-                        }
-                        else // middle of the field
-                        {
-                            if (field[i - 1, k - 1] != "*")
-                                field[i - 1, k - 1] = (int.Parse(field[i - 1, k - 1]) + 1).ToString();// spot 7
-                            if (field[i - 1, k] != "*")
-                                field[i - 1, k] = (int.Parse(field[i - 1, k]) + 1).ToString(); // spot 8
-                            if (field[i - 1, k + 1] != "*")
-                                field[i - 1, k + 1] = (int.Parse(field[i - 1, k + 1]) + 1).ToString(); // spot 9
-                            if (field[i, k - 1] != "*")
-                                field[i, k - 1] = (int.Parse(field[i, k - 1]) + 1).ToString(); // spot 4
-                            if (field[i, k + 1] != "*")
-                                field[i, k + 1] = (int.Parse(field[i, k + 1]) + 1).ToString(); // spot 6
-                            if (field[i + 1, k - 1] != "*")
-                                field[i + 1, k - 1] = (int.Parse(field[i + 1, k - 1]) + 1).ToString(); // spot 1
-                            if (field[i + 1, k] != "*")
-                                field[i + 1, k] = (int.Parse(field[i + 1, k]) + 1).ToString();// spot 2
-                            if (field[i + 1, k + 1] != "*")
-                                field[i + 1, k + 1] = (int.Parse(field[i + 1, k + 1]) + 1).ToString();// spot 3
-                        }
                     }
                 }
             }
         }
+        private static bool IsThisSpotANumber(int i, int k)
+        {
+            if (i < 0 || k < 0 || i >= y || k >= x)
+                return false;
+            else if (field[i, k] == "*")
+                return false;
+
+            return true;
+        }
+
         private class TileGrid : Panel
         {
 
             private static readonly HashSet<Tile> gridSearchBlackList = new HashSet<Tile>();
-            private Size gridSize;
+            //private Size gridSize;
             private static int numberOfFieldsOpen = 0;
 
-            private Tile this[Point point] =>(Tile)this.Controls[$"Tile_{point.X}_{point.Y}"];
+            private Tile this[Point point] => (Tile)this.Controls[$"Tile_{point.X}_{point.Y}"];
 
             private void Tile_MouseDown(object sender, MouseEventArgs e)
             {
@@ -225,6 +138,7 @@ namespace MineSweeperMax
 
                 int tileX = int.Parse(splitUpTileName[1]);
                 int tileY = int.Parse(splitUpTileName[2]);
+
                 if ((MineSweeperV2.Flag || e.Button == MouseButtons.Right) && tile.Text == "")
                 {
                     tile.Text = "F";
@@ -258,10 +172,10 @@ namespace MineSweeperMax
                     tile.TestAdjacentTiles();
                     gridSearchBlackList.Clear();
 
-                    if (numberOfFieldsOpen == (MineSweeperV2.numberOfFields - MineSweeperV2.numberOFBoms))
-                        WinningScreen();
+                    //if (numberOfFieldsOpen == (MineSweeperV2.numberOfFields - MineSweeperV2.numberOFBoms))
+                    //WinningScreen();
                 }
-                else if (numberOfFieldsOpen == (MineSweeperV2.numberOfFields - MineSweeperV2.numberOFBoms))
+                if (numberOfFieldsOpen == (MineSweeperV2.numberOfFields - MineSweeperV2.numberOFBoms))
                     WinningScreen();
 
 
@@ -303,7 +217,7 @@ namespace MineSweeperMax
             {
                 numberOfFieldsOpen = 0;
                 this.Controls.Clear();
-                this.gridSize = gridSize;
+                //this.gridSize = gridSize;
                 this.Size = new Size(gridSize.Width * Tile.LENGTH, gridSize.Height * Tile.LENGTH);
                 for (int x = 0; x < gridSize.Width; x++)
                 {
@@ -352,10 +266,10 @@ namespace MineSweeperMax
                     }
                     this.AdjecentTiles = adjecentTiles.ToArray();
                 }
-                
+
                 internal void TestAdjacentTiles()
                 {
-                    
+
                     if (gridSearchBlackList.Contains(this))
                     {
                         return;
